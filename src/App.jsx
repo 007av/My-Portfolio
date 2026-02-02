@@ -8,12 +8,13 @@ import Testimonial from "./sections/Testimonial";
 import Contact from "./sections/Contact";
 import Footer from "./sections/Footer";
 import ParticleBaground from "./components/ParticleBaground";
+import CustomCoursor from "./components/CustomCoursor"
 
 const App = () => {
   return (
     <div className=" relative gradiant text-white">
+      <CustomCoursor/>
       <ParticleBaground />
-
       <NavBar />
       <Home />
       <About />
