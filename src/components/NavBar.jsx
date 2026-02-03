@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import OverLayMenu from "./OverLayMenu";
 import MyLogo from "../assets/MyLogo.png";
 import { FiMenu } from "react-icons/fi";
@@ -6,6 +6,59 @@ import { FiMenu } from "react-icons/fi";
 const NavBar = () => {
   const [menuOpen, setmenuOpen] = useState(false);
   const [visible, setVisible] = useState(true);
+  const  [forceVisible , setForcevisible] = useState(false);
+
+
+  const lastScrollY = useRef(0); //for storeing last position of scroll
+  const timerId = useRef(null); //for set timeout for navabar
+
+
+  useEffect(()=>{
+     const homeSection = document.querySelector("#home");
+     const observer = new IntersectionObserver(
+      ([entry]) =>{
+        if(entry.isIntersecting){
+          setForcevisible(true);
+          setVisible(true);
+        }else{
+          setForcevisible(false);
+        }
+      },{threshold :0.1}
+     )
+     if(homeSection) observer.observe(homeSection);
+     return()=>{
+      if(homeSection) observer.unobserve(homeSection);
+     }
+  }, [])
+
+  useEffect(()=>{
+    const handleScroll = ()=>{
+      if(forceVisible){
+        setVisible(true); 
+        return
+      }
+      const currentScrollY = window.scrollY;
+      if(currentScrollY > lastScrollY.current){
+        setVisible(false)
+      }else{
+        setVisible(true)
+
+        if(timerId.current) clearTimeout(timerId.current);
+        timerId.current = setTimeout(()=>{
+          setVisible(false);
+        }, 3000)
+      }
+      lastScrollY.current = currentScrollY;
+    }
+
+    window.addEventListener("scroll", handleScroll ,{passive:true});
+
+    return()=>{
+      window.removeEventListener("scroll", handleScroll)
+      if(timerId.current) clearTimeout(timerId.current);
+
+    }
+  },[forceVisible])
 
   return (
     <>
