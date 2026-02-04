@@ -82,7 +82,7 @@ const ParticleBaground = () => {
   return (
     <canvas
       ref={canvasRef}
-      className=" w-full h-full fixed left-0 top-0 pointer-events-none z-0"
+      className=" absolute w-full h-full left-0 top-0 pointer-events-none z-0"
     ></canvas>
   );
 };
