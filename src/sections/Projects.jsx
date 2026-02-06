@@ -1,7 +1,8 @@
-import photo1 from "../assets/photo1.jpg";
-import img1 from "../assets/img1.jpg";
+import photo1 from "../assets/photo1.JPG"; 
+
+import img1 from "../assets/img1.JPG";
 import photo2 from "../assets/photo2.jpg";
-import img2 from "../assets/img2.jpg";
+import img2 from "../assets/img2.JPG";
 import { useEffect, useMemo, useRef, useState } from "react";
 import {
   motion,
