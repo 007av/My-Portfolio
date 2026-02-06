@@ -4,7 +4,7 @@ import p from "../assets/p.jpg";
 import { label, tr } from "framer-motion/client";
 const About = () => {
 const stats = [
-  { label : "Experiance" , value : " 1 + years"},
+  { label : "Experiance" , value : " 1.5 + years"},
    { label : "Speciality" , value : " Frontend "}
 ];
 

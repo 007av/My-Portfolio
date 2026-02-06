@@ -116,7 +116,7 @@ const Experiance = () => {
   const lineSize = useTransform(scrollYProgress, (v) => `${v * 100}%`);
 
   return (
-    <div className=" relative bg-black text-white">
+    <div id="experiance" className=" relative bg-black text-white">
       <div
         ref={sceneRef}
         style={{ height: `${SCENE_HEIGHT_VH}vh`, minHeight: "120vh" }}
