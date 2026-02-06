@@ -196,11 +196,23 @@ const Contact = () => {
 
             {
               status && (
-                <p className={` text-sm ${status === "success" ? "text-green-500" : status === "error" ? "text-red-400" : "text-yellow-400"}`}>
-                  {status === "sending" ? "sending..." : status === "success" ? "Message send successfully ✅" : "Something went wrong ❌"}
+                <p className={` text-sm ${status === "Success" ? "text-green-500" : status === "error" ? "text-red-400" : "text-yellow-400"}`}>
+                  {status === "sending" ? "sending..." : status === "Success" ? "Message send successfully ✅" : "Something went wrong ❌"}
                 </p>
               )
             }
+
+            <motion.button className="bg-blue-600 hover:bg-blue-700 disabled:opacity-60 text-white py-3 rounded-md font-semibold transition"
+            whileHover={{scale: 1.05}}
+            whileTap={{scale:0.95}}
+            disabled={status === "sending"}
+            type="submit"
+            >
+              {status === "sending" ? "sending...": "Send Message"}
+
+            </motion.button>
+
+
 
 
 
