@@ -130,28 +130,48 @@ const Experiance = () => {
             {!isMobile && (
               <div className=" relative w-full max-w-7xl">
                 <div className=" relative h-1.5 bg-white/15 rounded">
-                  <motion.div className=" absolute left-0 top-0 h-1.5 bg-white rounded origin-left"
-                  style={{ width: lineSize}}
-                  >
-
-                  </motion.div>
+                  <motion.div
+                    className=" absolute left-0 top-0 h-1.5 bg-white rounded origin-left"
+                    style={{ width: lineSize }}
+                  ></motion.div>
                 </div>
 
                 <div className=" relative flex justify-between mt-0">
-{
-  experiences.map((exp , idx) =>(
-    <ExperienceItem
-    key={idx}
-    exp= {exp}
-    idx={idx}
-    start={idx === 0 ? 0 : threshholds[idx -1]}
-    end={threshholds[idx]}
-    scrollYProgress={scrollYProgress}
-    layout="desktop"
-    />
-    
-  ))
-}
+                  {experiences.map((exp, idx) => (
+                    <ExperienceItem
+                      key={idx}
+                      exp={exp}
+                      idx={idx}
+                      start={idx === 0 ? 0 : threshholds[idx - 1]}
+                      end={threshholds[idx]}
+                      scrollYProgress={scrollYProgress}
+                      layout="desktop"
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+            {isMobile && (
+              <div className=" relative w-full max-w-md">
+                <div className=" absolute left-0 top-0 bottom-0 w-1.5 bg-white/15 rounded">
+                  <motion.div
+                    className=" absolute top-0 left-0 w-1.5 bg-white rounded origin-top "
+                    style={{ height: lineSize }}
+                  ></motion.div>
+                </div>
+
+                <div className=" relative flex flex-col gap-10 ml-10 mt-6 pb-28">
+                  {experiences.map((exp, idx) => (
+                    <ExperienceItem
+                      key={idx}
+                      exp={exp}
+                      idx={idx}
+                      start={idx === 0 ? 0 : threshholds[idx - 1]}
+                      end={threshholds[idx]}
+                      scrollYProgress={scrollYProgress}
+                      layout="mobile"
+                    />
+                  ))}
                 </div>
               </div>
             )}
